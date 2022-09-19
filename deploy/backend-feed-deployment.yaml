@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: backend-feed
-          image: ulrichanani/udagram-api-feed:v1
+          image: ulrichanani/udagram-api-feed:v2
           ports:
             - containerPort: 8080
           env:

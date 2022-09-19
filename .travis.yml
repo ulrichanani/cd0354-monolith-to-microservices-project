@@ -15,22 +15,24 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  # Feed API
-  - docker build -t udagram-api-feed ./udagram-api-feed
-  - docker tag udagram-api-feed ulrichanani/udagram-api-feed:v1
-  # User API
-  - docker build -t udagram-api-user ./udagram-api-user
-  - docker tag udagram-api-user ulrichanani/udagram-api-user:v1
-  # Reverseproxy
-  - docker build -t reverseproxy ./udagram-reverseproxy
-  - docker tag reverseproxy ulrichanani/reverseproxy:v1
-  # Frontend
-  - docker build -t udagram-frontend ./udagram-frontend
-  - docker tag udagram-frontend ulrichanani/udagram-frontend:v1
+  - docker-compose build
+  # # Feed API
+  # - docker build -t udagram-api-feed ./udagram-api-feed
+  # - docker tag udagram-api-feed ulrichanani/udagram-api-feed:v1
+  # # User API
+  # - docker build -t udagram-api-user ./udagram-api-user
+  # - docker tag udagram-api-user ulrichanani/udagram-api-user:v1
+  # # Reverseproxy
+  # - docker build -t reverseproxy ./udagram-reverseproxy
+  # - docker tag reverseproxy ulrichanani/reverseproxy:v1
+  # # Frontend
+  # - docker build -t udagram-frontend ./udagram-frontend
+  # - docker tag udagram-frontend ulrichanani/udagram-frontend:v1
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push ulrichanani/reverseproxy:v1
-  - docker push ulrichanani/udagram-api-user:v1
-  - docker push ulrichanani/udagram-api-feed:v1
-  - docker push ulrichanani/udagram-frontend:v1
+  - docker-compose push
+  # - docker push ulrichanani/reverseproxy:v1
+  # - docker push ulrichanani/udagram-api-user:v1
+  # - docker push ulrichanani/udagram-api-feed:v1
+  # - docker push ulrichanani/udagram-frontend:v1
