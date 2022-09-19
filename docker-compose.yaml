@@ -1,7 +1,7 @@
 version: "3"
 services:
   reverseproxy:
-      image: ulrichanani/udagram-reverseproxy:v3
+      image: ulrichanani/udagram-reverseproxy:v4
       build:
         context: ./udagram-reverseproxy
       ports:
@@ -11,7 +11,7 @@ services:
         - backend-user
         - backend-feed
   backend-user:
-    image: ulrichanani/udagram-api-user:v3
+    image: ulrichanani/udagram-api-user:v4
     build:
       context: ./udagram-api-user
     environment:
@@ -25,7 +25,7 @@ services:
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
   backend-feed:
-    image: ulrichanani/udagram-api-feed:v3
+    image: ulrichanani/udagram-api-feed:v4
     build:
       context: ./udagram-api-feed
     volumes:
@@ -41,7 +41,7 @@ services:
       JWT_SECRET: $JWT_SECRET
       URL: "http://localhost:8100"
   frontend:
-    image: ulrichanani/udagram-frontend:v3
+    image: ulrichanani/udagram-frontend:v4
     build:
       context: ./udagram-frontend
     ports:

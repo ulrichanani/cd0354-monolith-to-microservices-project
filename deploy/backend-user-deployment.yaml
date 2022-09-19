@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-user
+  name: udagram-api-user
   labels:
-    app: backend-user
+    app: udagram-api-user
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: backend-user
+      app: udagram-api-user
   template:
     metadata:
       labels:
-        app: backend-user
+        app: udagram-api-user
     spec:
       containers:
-        - name: backend-user
-          image: ulrichanani/udagram-api-user:v3
+        - name: udagram-api-user
+          image: ulrichanani/udagram-api-user:v4
           ports:
             - containerPort: 8080
           env:

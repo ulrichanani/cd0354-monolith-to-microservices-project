@@ -1,24 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: reverseproxy
+  name: udagram-reverseproxy
   labels:
-    app: reverseproxy
+    app: udagram-reverseproxy
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: reverseproxy
+      app: udagram-reverseproxy
   template:
     metadata:
       labels:
-        app: reverseproxy
+        app: udagram-reverseproxy
     spec:
       containers:
-        - name: reverseproxy
-          image: ulrichanani/udagram-reverseproxy:v3
+        - name: udagram-reverseproxy
+          image: ulrichanani/udagram-reverseproxy:v4
           ports:
             - containerPort: 8080
-
-# Create reverse proxy service
-# kubectl expose deployment reverseproxy --type=LoadBalancer --name=reverseproxy-svc
