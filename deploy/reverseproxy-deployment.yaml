@@ -19,3 +19,6 @@ spec:
           image: ulrichanani/udagram-reverseproxy:v2
           ports:
             - containerPort: 8080
+
+# Create reverse proxy service
+# kubectl expose deployment reverseproxy --type=LoadBalancer --name=reverseproxy-svc
