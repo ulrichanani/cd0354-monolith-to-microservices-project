@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: udagram-frontend
-          image: ulrichanani/udagram-frontend:v2
+          image: ulrichanani/udagram-frontend:v3
           ports:
             - containerPort: 8080
 
