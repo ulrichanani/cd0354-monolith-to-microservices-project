@@ -3,7 +3,7 @@ FROM beevelop/ionic:latest AS ionic
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-Lancez npm ci
+RUN npm ci
 
 COPY . .
 RUN ionic build
