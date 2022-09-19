@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-user
+  labels:
+    app: backend-user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-user
+  template:
+    metadata:
+      labels:
+        app: backend-user
+    spec:
+      containers:
+        - name: backend-user
+          image: ulrichanani/udagram-api-user:v1
+          ports:
+            - containerPort: 8080
+          env:
+            - name: POSTGRES_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: udagram-secrets
+                  key: POSTGRES_USERNAME
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: udagram-secrets
+                  key: POSTGRES_PASSWORD
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: udagram-secrets
+                  key: JWT_SECRET
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: udagram-config
+                  key: POSTGRES_HOST
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: udagram-config
+                  key: POSTGRES_DB
+            - name: AWS_BUCKET
+              valueFrom:
+                configMapKeyRef:
+                  name: udagram-config
+                  key: AWS_BUCKET
+            - name: AWS_REGION
+              valueFrom:
+                configMapKeyRef:
+                  name: udagram-config
+                  key: AWS_REGION
+            - name: AWS_PROFILE
+              valueFrom:
+                configMapKeyRef:
+                  name: udagram-config
+                  key: AWS_PROFILE
+            - name: URL
+              valueFrom:
+                configMapKeyRef:
+                  name: udagram-config
+                  key: URL
