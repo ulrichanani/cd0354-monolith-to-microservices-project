@@ -18,4 +18,6 @@ kubectl expose deployment udagram-reverseproxy --type=LoadBalancer --name=public
 # Frontend
 kubectl apply -f frontend-deployment.yaml
 kubectl expose deployment udagram-frontend --type=LoadBalancer --name=public-udagram-frontend-svc
+
+kubectl autoscale deployment udagram-api-feed --cpu-percent=50 --min=1 --max=2
 ```
