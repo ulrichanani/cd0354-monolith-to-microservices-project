@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: udagram-api-feed
-          image: ulrichanani/udagram-api-feed:v6
+          image: ulrichanani/udagram-api-feed:v7
           ports:
             - containerPort: 8080
           env:
@@ -30,6 +30,16 @@ spec:
                 secretKeyRef:
                   name: udagram-secrets
                   key: POSTGRES_PASSWORD
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: aws-secret
+                  key: accessKeyId
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: aws-secret
+                  key: secretAccessKey
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
