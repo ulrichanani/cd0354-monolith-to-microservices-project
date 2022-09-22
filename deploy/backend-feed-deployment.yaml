@@ -17,6 +17,11 @@ spec:
       containers:
         - name: udagram-api-feed
           image: ulrichanani/udagram-api-feed:v7
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
           ports:
             - containerPort: 8080
           env:
