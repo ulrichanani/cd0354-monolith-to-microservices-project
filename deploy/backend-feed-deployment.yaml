@@ -5,7 +5,7 @@ metadata:
   labels:
     app: udagram-api-feed
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: udagram-api-feed
@@ -17,6 +17,11 @@ spec:
       containers:
         - name: udagram-api-feed
           image: ulrichanani/udagram-api-feed:v8
+          resources:
+            limits:
+              cpu: 500m
+            requests:
+              cpu: 200m
           ports:
             - containerPort: 8080
           env:
